@@ -4,16 +4,36 @@ extends KinematicBody2D
 # var a = 2
 # var b = "textvar"
 export (int) var run_speed = 100
-export (int) var jump_speed = -400
-export (int) var gravity = 1200
+export (int) var jump_speed = -250
+export (int) var gravity = 750
 
 var velocity = Vector2()
+var target = Vector2()
 var jumping = false
+
+onready var timer = get_node("Timer")
+onready var emote = get_node("dino/emote")
+
+func _process(delta):	
+    var up = Input.is_action_pressed('ui_up')
+    if up and !emote.is_visible(): 
+        emote.show()
+        timer.start()
+		
+    if Input.is_mouse_button_pressed(BUTTON_LEFT):
+        position = get_viewport().get_mouse_position()
+
+func _input(event):
+    if event.is_action_pressed('click'):
+        target = get_global_mouse_position()
 
 func get_input():
     velocity.x = 0
     var right = Input.is_action_pressed('ui_right')
     var left = Input.is_action_pressed('ui_left')
+	
+    var up = Input.is_action_pressed('ui_up')
+	
     var jump = Input.is_action_just_pressed('ui_select')
 	
     var sprite = get_node("dino")
@@ -33,6 +53,7 @@ func get_input():
             velocity.x -= run_speed
         else:
             anim.set_current_animation("idle")
+		
 
 func _physics_process(delta):
     get_input()
@@ -40,3 +61,11 @@ func _physics_process(delta):
     if jumping and is_on_floor():
         jumping = false
     velocity = move_and_slide(velocity, Vector2(0, -1))
+
+
+func _on_Timer_timeout():
+	emote.hide()
+	
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("dino"):
+		print("yes")
