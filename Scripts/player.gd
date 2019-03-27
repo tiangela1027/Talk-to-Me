@@ -10,6 +10,7 @@ export (int) var gravity = 750
 var velocity = Vector2()
 var target = Vector2()
 var jumping = false
+var entered = false
 
 onready var timer = get_node("Timer")
 onready var emote = get_node("dino/emote")
@@ -19,13 +20,6 @@ func _process(delta):
     if up and !emote.is_visible(): 
         emote.show()
         timer.start()
-		
-    if Input.is_mouse_button_pressed(BUTTON_LEFT):
-        position = get_viewport().get_mouse_position()
-
-func _input(event):
-    if event.is_action_pressed('click'):
-        target = get_global_mouse_position()
 
 func get_input():
     velocity.x = 0
@@ -65,7 +59,9 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	emote.hide()
-	
-func _on_Area2D_area_entered(area):
-	if area.is_in_group("dino"):
-		print("yes")
+
+func _on_noclick_mouse_entered():
+	entered = true
+
+func _on_noclick_mouse_exited():
+	entered = false

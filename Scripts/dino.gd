@@ -12,7 +12,7 @@ var blush = load("res://Assets/emotes/pipo-popupemotes011.png")
 var irritated = load("res://Assets/emotes/pipo-popupemotes019.png")
 var sleepy = load("res://Assets/emotes/pipo-popupemotes021.png")
 var mad = load("res://Assets/emotes/pipo-popupemotes033.png")
-var question = load("res://Assets/emotes/surprise.png")
+var question = load("res://Assets/emotes/pipo-popupemotes003.png")
 
 onready var emote = get_node("emote")
 
@@ -39,3 +39,9 @@ func _ready():
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
+
+func _on_Area2D_area_entered(area):
+	if (!area.is_in_group("player") && area.is_in_group("dino")):
+		print(area.get_parent().get_node("emote"))
+		emote.texture = area.get_parent().get_node("emote").texture
+	

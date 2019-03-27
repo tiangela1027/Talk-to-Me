@@ -1,44 +1,105 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://Scenes/world.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://Assets/azul.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/dino.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/dinosaurs/DinoSprites - vita.png" type="Texture" id=4]
 [ext_resource path="res://Assets/dinosaurs/DinoSprites - tard.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/noclick.gd" type="Script" id=7]
 
 [sub_resource type="SegmentShape2D" id=1]
 
 custom_solver_bias = 0.0
 a = Vector2( 302.38, 0 )
-b = Vector2( -9.44937, 0 )
+b = Vector2( 0, 0 )
 
 [sub_resource type="SegmentShape2D" id=2]
 
 custom_solver_bias = 0.0
-a = Vector2( 100, 0 )
-b = Vector2( 0, 0 )
+a = Vector2( 98.4287, 0 )
+b = Vector2( -5.65597, 0 )
 
 [sub_resource type="SegmentShape2D" id=3]
 
 custom_solver_bias = 0.0
-a = Vector2( 100, 0 )
+a = Vector2( 98.1983, 0 )
 b = Vector2( 0, 0 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 70, 10 )
+extents = Vector2( 9.03226, 20 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 20, 20 )
+extents = Vector2( 9.03226, 20 )
 
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
+extents = Vector2( 11.3905, 20 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
 extents = Vector2( 40, 50 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=11]
+
+custom_solver_bias = 0.0
+extents = Vector2( 40, 50 )
+
+[sub_resource type="SegmentShape2D" id=12]
+
+custom_solver_bias = 0.0
+a = Vector2( 25.1225, -80 )
+b = Vector2( 6.28061, -20 )
+
+[sub_resource type="SegmentShape2D" id=13]
+
+custom_solver_bias = 0.0
+a = Vector2( 37.6836, -20 )
+b = Vector2( 6.28061, -20 )
+
+[sub_resource type="SegmentShape2D" id=14]
+
+custom_solver_bias = 0.0
+a = Vector2( -25.1224, -100 )
+b = Vector2( 3.8147e-006, -20 )
+
+[sub_resource type="SegmentShape2D" id=15]
+
+custom_solver_bias = 0.0
+a = Vector2( 37.6836, -20 )
+b = Vector2( 6.28061, -20 )
+
+[sub_resource type="SegmentShape2D" id=16]
+
+custom_solver_bias = 0.0
+a = Vector2( -25.1224, -100 )
+b = Vector2( 18.8418, 40 )
+
+[sub_resource type="RectangleShape2D" id=17]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 10 )
 
 [node name="world" type="Node2D"]
 
@@ -59,14 +120,14 @@ margin_bottom = 472.0
 rect_scale = Vector2( 1.3, 1.3 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="dino" parent="." index="1" instance=ExtResource( 3 )]
 
@@ -74,21 +135,24 @@ position = Vector2( 280, 380 )
 
 [node name="dino4" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 700, 280 )
+editor/display_folded = true
+position = Vector2( 710, 290 )
 texture = ExtResource( 4 )
 flip_h = true
-_sections_unfolded = [ "Offset", "Region", "Transform" ]
+_sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
 [node name="dino2" parent="." index="3" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 580, 580 )
 texture = ExtResource( 5 )
 flip_h = true
-_sections_unfolded = [ "Offset", "Region", "Transform" ]
+_sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
 [node name="player" parent="." index="4" instance=ExtResource( 6 )]
 
-position = Vector2( 720, 280 )
+editor/display_folded = true
+position = Vector2( 600, 290 )
 z_index = 20
 _sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index", "collision" ]
 gravity = 750
@@ -119,10 +183,440 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Smoothing", "Transform" ]
 
-[node name="ground1" type="StaticBody2D" parent="." index="5"]
+[node name="ground" type="Node2D" parent="." index="5"]
 
 editor/display_folded = true
-position = Vector2( 0, -10 )
+
+[node name="ground1" type="StaticBody2D" parent="ground" index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/ground1" index="0"]
+
+position = Vector2( 500, 310 )
+scale = Vector2( 1.05827, 1.05703 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="ground2" type="StaticBody2D" parent="ground" index="1"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/ground2" index="0"]
+
+position = Vector2( 91.2952, 400 )
+scale = Vector2( 3.76508, 1 )
+shape = SubResource( 2 )
+
+[node name="ground3" type="StaticBody2D" parent="ground" index="2"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/ground3" index="0"]
+
+position = Vector2( 10.5341, 600 )
+scale = Vector2( 10.178, -1.16667 )
+shape = SubResource( 3 )
+
+[node name="ground4" type="StaticBody2D" parent="ground" index="3"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/ground4" index="0"]
+
+position = Vector2( 640, 120 )
+scale = Vector2( 15.5, 0.5 )
+shape = SubResource( 4 )
+
+[node name="ground5" type="StaticBody2D" parent="ground" index="4"]
+
+editor/display_folded = true
+position = Vector2( 350, 70 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/ground5" index="0"]
+
+position = Vector2( 565, 114.25 )
+scale = Vector2( 7.89544, 0.25 )
+shape = SubResource( 5 )
+
+[node name="ground6" type="StaticBody2D" parent="ground" index="5"]
+
+editor/display_folded = true
+position = Vector2( 60, 280 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/ground6" index="0"]
+
+position = Vector2( -32.5, 0 )
+scale = Vector2( 5.19437, 0.25 )
+shape = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="fence" type="StaticBody2D" parent="ground" index="6"]
+
+editor/display_folded = true
+position = Vector2( 750, 550 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/fence" index="0"]
+
+position = Vector2( 94.1253, 0 )
+scale = Vector2( 15.6961, 0.25 )
+shape = SubResource( 6 )
+one_way_collision = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="not_allowed" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="noclick" type="Area2D" parent="." index="7"]
+
+editor/display_folded = true
+z_index = 20
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 7 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="noclick" index="0"]
+
+position = Vector2( 0, -26.0714 )
+scale = Vector2( 1, 1.20536 )
+build_mode = 0
+polygon = PoolVector2Array( 330, 130, 480, 130, 480, 270, 330, 270 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="noclick" index="1"]
+
+build_mode = 0
+polygon = PoolVector2Array( 490, 130, 780, 130, 820, 170, 820, 190, 490, 190 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="noclick" index="2"]
+
+build_mode = 0
+polygon = PoolVector2Array( 580, 310, 820, 310, 820, 490, 580, 490 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="noclick" index="3"]
+
+build_mode = 0
+polygon = PoolVector2Array( 120, 70, 270, 70, 270, 300, 120, 300 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="noclick" index="4"]
+
+build_mode = 0
+polygon = PoolVector2Array( 490, -40, 900, -40, 900, 100, 850, 100, 790, 40, 490, 40 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="noclick" index="5"]
+
+build_mode = 0
+polygon = PoolVector2Array( 1030, 190, 1030, 460, 850, 460, 850, 190 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="noclick" index="6"]
+
+build_mode = 0
+polygon = PoolVector2Array( 910, -40, 1030, -40, 1030, 190, 990, 190, 990, 50, 910, 50 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="noclick" index="7"]
+
+build_mode = 0
+polygon = PoolVector2Array( 280, -40, 330, -40, 330, 250, 280, 250 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="rails" type="Node2D" parent="." index="8"]
+
+editor/display_folded = true
+
+[node name="rail1" type="StaticBody2D" parent="rails" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rails/rail1" index="0"]
+
+position = Vector2( 480, 285 )
+scale = Vector2( 0.232558, 2.92453 )
+shape = SubResource( 7 )
+
+[node name="rail2" type="StaticBody2D" parent="rails" index="1"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rails/rail2" index="0"]
+
+position = Vector2( 480, 70 )
+scale = Vector2( 0.5, 6.15385 )
+shape = SubResource( 8 )
+
+[node name="rail3" type="StaticBody2D" parent="rails" index="2"]
+
+position = Vector2( 830, 206 )
+scale = Vector2( 1, 1.4375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rails/rail3" index="0"]
+
+position = Vector2( 8, 27.1304 )
+scale = Vector2( 0.5, 14.1806 )
+shape = SubResource( 9 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="rail4" type="StaticBody2D" parent="rails" index="3"]
+
+position = Vector2( 980, 200 )
+scale = Vector2( 1, 1.4375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rails/rail4" index="0"]
+
+position = Vector2( 10, -46.6413 )
+scale = Vector2( 0.5, 4.12291 )
+shape = SubResource( 10 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="rail5" type="StaticBody2D" parent="rails" index="4"]
+
+position = Vector2( -760, 370 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rails/rail5" index="0"]
+
+position = Vector2( 850, -140 )
+scale = Vector2( 0.232558, 0.990565 )
+shape = SubResource( 11 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="stairs" type="Node2D" parent="." index="9"]
+
+editor/display_folded = true
+
+[node name="stairs1" type="StaticBody2D" parent="stairs" index="0"]
+
+position = Vector2( 727, 281 )
+scale = Vector2( 0.8125, 0.34375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="stairs/stairs1" index="0"]
+
+position = Vector2( 7.38464, -2.90906 )
+scale = Vector2( 1.95963, 1.45455 )
+shape = SubResource( 12 )
+
+[node name="ground6" type="StaticBody2D" parent="stairs/stairs1" index="1"]
+
+position = Vector2( 32, -90.1818 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="stairs/stairs1/ground6" index="0"]
+
+position = Vector2( 12.3077, 0 )
+scale = Vector2( 1.95963, 1.45455 )
+shape = SubResource( 13 )
+
+[node name="stairs2" type="StaticBody2D" parent="stairs" index="1"]
+
+editor/display_folded = true
+position = Vector2( 780, 160 )
+scale = Vector2( 0.8125, 0.34375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="stairs/stairs2" index="0"]
+
+position = Vector2( 49.2308, 0 )
+scale = Vector2( 1.95963, 1.45455 )
+shape = SubResource( 14 )
+
+[node name="stairs3" type="StaticBody2D" parent="stairs" index="2"]
+
+position = Vector2( 30, 410 )
+scale = Vector2( 0.8125, 0.34375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="stairs/stairs3" index="0"]
+
+position = Vector2( 49.2308, 0 )
+scale = Vector2( 1.95963, 1.45455 )
+shape = SubResource( 14 )
+
+[node name="ground7" type="StaticBody2D" parent="stairs/stairs3" index="1"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="stairs/stairs3/ground7" index="0"]
+
+position = Vector2( -73.8462, -116.364 )
+scale = Vector2( 1.95963, 1.45455 )
+shape = SubResource( 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="stairs4" type="StaticBody2D" parent="stairs" index="3"]
+
+position = Vector2( 30, 410 )
+scale = Vector2( 0.8125, 0.34375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="stairs/stairs4" index="0"]
+
+position = Vector2( 320, 378.182 )
+scale = Vector2( 1.95963, 1.45455 )
+shape = SubResource( 16 )
+
+[node name="ground5" type="StaticBody2D" parent="stairs/stairs4" index="1"]
+
+editor/display_folded = true
+position = Vector2( 97.2308, 261.818 )
+scale = Vector2( 5.42308, 2.90909 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="stairs/stairs4/ground5" index="0"]
+
+position = Vector2( 0, -6.49998 )
+scale = Vector2( 1, 0.500001 )
+shape = SubResource( 17 )
+
+[node name="world_walls" type="StaticBody2D" parent="." index="10"]
+
+editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -134,102 +628,34 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground1" index="0"]
+[node name="top" type="CollisionPolygon2D" parent="world_walls" index="0"]
 
-position = Vector2( 500, 310 )
-scale = Vector2( 1.05827, 1.05703 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Visibility" ]
+build_mode = 0
+polygon = PoolVector2Array( -40, -60, 1050, -60, 1050, -40, -40, -40 )
 
-[node name="ground2" type="StaticBody2D" parent="." index="6"]
+[node name="bottom" type="CollisionPolygon2D" parent="world_walls" index="1"]
 
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+position = Vector2( 10, 680 )
+build_mode = 0
+polygon = PoolVector2Array( -40, -60, 1050, -60, 1050, -40, -40, -40 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground2" index="0"]
+[node name="left" type="CollisionPolygon2D" parent="world_walls" index="2"]
 
-position = Vector2( 71.8868, 400 )
-scale = Vector2( 3.96226, 1 )
-shape = SubResource( 2 )
+position = Vector2( 10, 0 )
+build_mode = 0
+polygon = PoolVector2Array( -40, -40, -20, -40, -20, 640, -40, 640 )
 
-[node name="ground3" type="StaticBody2D" parent="." index="7"]
+[node name="right" type="CollisionPolygon2D" parent="world_walls" index="3"]
 
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+position = Vector2( 1070, 0 )
+build_mode = 0
+polygon = PoolVector2Array( -40, -40, -20, -40, -20, 640, -40, 640 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground3" index="0"]
+[connection signal="timeout" from="not_allowed" to="noclick" method="_on_not_allowed_timeout"]
 
-position = Vector2( -10, 600 )
-scale = Vector2( 10.3774, -1.16667 )
-shape = SubResource( 3 )
+[connection signal="mouse_entered" from="noclick" to="noclick" method="_on_noclick_mouse_entered"]
 
-[node name="building2" type="StaticBody2D" parent="." index="8"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="building2" index="0"]
-
-position = Vector2( 480, 220 )
-scale = Vector2( 0.0684929, 8.71154 )
-shape = SubResource( 4 )
-
-[node name="building3" type="StaticBody2D" parent="." index="9"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="building3" index="0"]
-
-position = Vector2( 905, 355 )
-scale = Vector2( 4.13044, 6.73913 )
-shape = SubResource( 5 )
-
-[node name="rail1" type="StaticBody2D" parent="." index="10"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rail1" index="0"]
-
-position = Vector2( 480, 375 )
-scale = Vector2( 0.232558, 1.22641 )
-shape = SubResource( 6 )
-
-[node name="Node2D" type="Node2D" parent="." index="11"]
-
-position = Vector2( -10, 570 )
-_sections_unfolded = [ "Transform" ]
-
-[connection signal="area_entered" from="player/dino/Area2D" to="player" method="_on_Area2D_area_entered"]
+[connection signal="mouse_exited" from="noclick" to="noclick" method="_on_noclick_mouse_exited"]
 
 
 [editable path="player"]
