@@ -8,7 +8,7 @@
 [sub_resource type="Animation" id=1]
 
 resource_name = "idle"
-length = 1.2
+length = 1.8
 loop = true
 step = 0.2
 tracks/0/type = "value"
@@ -18,7 +18,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"times": PoolRealArray( 0, 0.6, 1.2, 1.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Rect2( 0, 0, 24, 24 ), Rect2( 24, 0, 24, 24 ), Rect2( 48, 0, 24, 24 ), Rect2( 72, 0, 24, 24 ) ]

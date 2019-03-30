@@ -131,9 +131,16 @@ _sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="dino" parent="." index="1" instance=ExtResource( 3 )]
 
+position = Vector2( 960, 160 )
+texture = ExtResource( 4 )
+flip_h = true
+_sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
+
+[node name="dino1" parent="." index="2" instance=ExtResource( 3 )]
+
 position = Vector2( 280, 380 )
 
-[node name="dino4" parent="." index="2" instance=ExtResource( 3 )]
+[node name="dino2" parent="." index="3" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 710, 290 )
@@ -141,7 +148,7 @@ texture = ExtResource( 4 )
 flip_h = true
 _sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
-[node name="dino2" parent="." index="3" instance=ExtResource( 3 )]
+[node name="dino3" parent="." index="4" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( 580, 580 )
@@ -149,13 +156,26 @@ texture = ExtResource( 5 )
 flip_h = true
 _sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
-[node name="player" parent="." index="4" instance=ExtResource( 6 )]
+[node name="dino4" parent="." index="5" instance=ExtResource( 3 )]
 
-editor/display_folded = true
+position = Vector2( 520, 90 )
+
+[node name="dino5" parent="." index="6" instance=ExtResource( 3 )]
+
+position = Vector2( 40, 470 )
+texture = ExtResource( 4 )
+
+[node name="player" parent="." index="7" instance=ExtResource( 6 )]
+
 position = Vector2( 600, 290 )
 z_index = 20
 _sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index", "collision" ]
+run_speed = 125
 gravity = 750
+
+[node name="dino" parent="player" index="0"]
+
+editor/display_folded = true
 
 [node name="Camera2D" type="Camera2D" parent="player" index="1"]
 
@@ -183,7 +203,7 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Smoothing", "Transform" ]
 
-[node name="ground" type="Node2D" parent="." index="5"]
+[node name="ground" type="Node2D" parent="." index="8"]
 
 editor/display_folded = true
 
@@ -317,16 +337,15 @@ shape = SubResource( 6 )
 one_way_collision = true
 _sections_unfolded = [ "Transform" ]
 
-[node name="not_allowed" type="Timer" parent="." index="6"]
+[node name="not_allowed" type="Timer" parent="." index="9"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="noclick" type="Area2D" parent="." index="7"]
+[node name="noclick" type="Area2D" parent="." index="10"]
 
-editor/display_folded = true
 z_index = 20
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -388,7 +407,7 @@ build_mode = 0
 polygon = PoolVector2Array( 280, -40, 330, -40, 330, 250, 280, 250 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="rails" type="Node2D" parent="." index="8"]
+[node name="rails" type="Node2D" parent="." index="11"]
 
 editor/display_folded = true
 
@@ -483,7 +502,7 @@ scale = Vector2( 0.232558, 0.990565 )
 shape = SubResource( 11 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="stairs" type="Node2D" parent="." index="9"]
+[node name="stairs" type="Node2D" parent="." index="12"]
 
 editor/display_folded = true
 
@@ -614,7 +633,7 @@ position = Vector2( 0, -6.49998 )
 scale = Vector2( 1, 0.500001 )
 shape = SubResource( 17 )
 
-[node name="world_walls" type="StaticBody2D" parent="." index="10"]
+[node name="world_walls" type="StaticBody2D" parent="." index="13"]
 
 editor/display_folded = true
 input_pickable = false

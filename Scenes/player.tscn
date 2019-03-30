@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/dino.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/dinosaurs/DinoSprites - mort.png" type="Texture" id=3]
+[ext_resource path="res://Assets/dinosaurs/player_skin.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -18,14 +18,18 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Visibility" ]
-run_speed = 100
+run_speed = 125
 jump_speed = -250
 gravity = 0
 
 [node name="dino" parent="." index="0" instance=ExtResource( 2 )]
 
 texture = ExtResource( 3 )
-region_rect = Rect2( 72, 0, 24, 24 )
+region_rect = Rect2( 24, 0, 24, 24 )
+
+[node name="AnimationPlayer" parent="dino" index="0"]
+
+playback_speed = 2.0
 
 [node name="Area2D" parent="dino" index="1" groups=[
 "player",

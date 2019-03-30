@@ -3,7 +3,7 @@ extends KinematicBody2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-export (int) var run_speed = 100
+export (int) var run_speed = 125
 export (int) var jump_speed = -250
 export (int) var gravity = 750
 
