@@ -9,7 +9,7 @@ onready var player = get_node("../player")
 onready var timer = get_node("../not_allowed")
 
 var what = load("res://Assets/emotes/surprise.png")
-var temp
+var original
 var temp_pos
 
 func _ready():
@@ -19,7 +19,8 @@ func _ready():
 
 func _process(delta):
 	emote = get_node("../player/dino/emote")
-	temp = emote.texture
+	if (emote.texture != what):
+		original = emote.texture
 	temp_pos = player.position
 	
 func _input(event):
@@ -40,6 +41,5 @@ func _on_noclick_mouse_exited():
 	print(entered)
 
 func _on_not_allowed_timeout():
+	emote.texture = original
 	emote.hide()
-	emote.texture = temp
-

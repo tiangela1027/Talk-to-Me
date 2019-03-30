@@ -14,6 +14,11 @@ var sleepy = load("res://Assets/emotes/pipo-popupemotes021.png")
 var mad = load("res://Assets/emotes/pipo-popupemotes033.png")
 var question = load("res://Assets/emotes/pipo-popupemotes003.png")
 
+var what = load("res://Assets/emotes/surprise.png")
+
+var change_emote = false
+var temp
+
 onready var emote = get_node("emote")
 
 func _ready():
@@ -40,8 +45,15 @@ func _ready():
 #	# Update game logic here.
 #	pass
 
+func _input(event):
+	if (event.is_action_pressed("ui_down") && change_emote):
+		emote.texture = temp.get_parent().get_node("emote").texture
+
 func _on_Area2D_area_entered(area):
 	if (!area.is_in_group("player") && area.is_in_group("dino")):
-		print(area.get_parent().get_node("emote"))
-		emote.texture = area.get_parent().get_node("emote").texture
+		change_emote = true
+		temp = area
 	
+func _on_Area2D_area_exited(area):
+	if (!area.is_in_group("player") && area.is_in_group("dino")):
+		change_emote = false

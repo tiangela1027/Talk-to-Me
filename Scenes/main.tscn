@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://Assets/azul.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Assets/dinosaurs/DinoSprites - tard.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/noclick.gd" type="Script" id=7]
+[ext_resource path="res://Sounds/POL-follow-me-short.wav" type="AudioStream" id=8]
+[ext_resource path="res://Scenes/bgmusic.gd" type="Script" id=9]
 
 [sub_resource type="SegmentShape2D" id=1]
 
@@ -54,7 +56,7 @@ extents = Vector2( 10, 10 )
 [sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 559.25, 1.81659 )
 
 [sub_resource type="RectangleShape2D" id=10]
 
@@ -167,10 +169,10 @@ texture = ExtResource( 4 )
 
 [node name="player" parent="." index="7" instance=ExtResource( 6 )]
 
+editor/display_folded = true
 position = Vector2( 600, 290 )
 z_index = 20
 _sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index", "collision" ]
-run_speed = 125
 gravity = 750
 
 [node name="dino" parent="player" index="0"]
@@ -346,6 +348,7 @@ autostart = false
 
 [node name="noclick" type="Area2D" parent="." index="10"]
 
+editor/display_folded = true
 z_index = 20
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -409,8 +412,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="rails" type="Node2D" parent="." index="11"]
 
-editor/display_folded = true
-
 [node name="rail1" type="StaticBody2D" parent="rails" index="0"]
 
 input_pickable = false
@@ -459,8 +460,9 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rails/rail3" index="0"]
 
-position = Vector2( 8, 27.1304 )
-scale = Vector2( 0.5, 14.1806 )
+position = Vector2( -1.74853, 68.4938 )
+rotation = -1.5708
+scale = Vector2( 0.155267, 0.962526 )
 shape = SubResource( 9 )
 _sections_unfolded = [ "Transform" ]
 
@@ -670,11 +672,26 @@ position = Vector2( 1070, 0 )
 build_mode = 0
 polygon = PoolVector2Array( -40, -40, -20, -40, -20, 640, -40, 640 )
 
+[node name="bgmusic" type="AudioStreamPlayer2D" parent="." index="14"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+script = ExtResource( 9 )
+_sections_unfolded = [ "Pause" ]
+
 [connection signal="timeout" from="not_allowed" to="noclick" method="_on_not_allowed_timeout"]
 
 [connection signal="mouse_entered" from="noclick" to="noclick" method="_on_noclick_mouse_entered"]
 
 [connection signal="mouse_exited" from="noclick" to="noclick" method="_on_noclick_mouse_exited"]
+
+[connection signal="finished" from="bgmusic" to="bgmusic" method="_on_bgmusic_finished"]
 
 
 [editable path="player"]
